@@ -5,6 +5,10 @@ body {
 h1 {
     font-family: Verdana;
 }
+h2 {
+    font-family: Verdana;
+    font-size: large;
+}
 
 
 button{
@@ -42,3 +46,4 @@ input {
     width: 350px; 
     height: 40px; 
 }
+

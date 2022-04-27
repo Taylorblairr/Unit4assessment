@@ -3,6 +3,8 @@ const cors = require("cors");
 
 const app = express();
 
+let namesArr = ["Jeff", "Jim", "Node" ]
+
 app.use(cors());
 
 app.use(express.json()); // When we want to be able to accept JSON.
@@ -42,11 +44,7 @@ app.get("/api/enc", (req, res) => {
   
 });
 
-app.get("/api/click", (req, res) => {
-  const click = `That sounds like the name of a legendary coder!!`
-  res.status(200).send(click)
 
-});
 
 
 app.get("/api/last", (req, res) => {
@@ -62,6 +60,25 @@ app.get("/api/last", (req, res) => {
   res.status(200).send(randomLast);
   
 });
+
+
+app.post("/api/name/", (req,res) => {
+  const {inputValue} = req.body
+  namesArr.push(inputValue)
+  console.log(namesArr)
+  res.status(200).send(namesArr)
+})
+
+
+  app.delete("/api/remove/", (req, res) => {
+      const {remoValue}  = req.body
+          remoValue.filter(namesArr, 0)
+          namesArr.splice(remoValue, -1)
+          console.log(namesArr)
+          res.status(200).send(namesArr)  
+  });
+
+
 
 
 app.listen(4000, () => console.log("Server running on 4000"))
